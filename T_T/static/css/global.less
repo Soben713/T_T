@@ -17,6 +17,28 @@ body {
   font-weight: normal !important;
 }
 
+.header {
+  position: relative;
+  div {
+    font-family: Arial !important;
+    width: 100px;
+    height: 100px;
+    font-weight: bold !important;
+    font-size: 50px;
+    margin:auto;
+    z-index: 2;
+    display: inline-block;
+  }
+  label{
+  }
+}
+
+//Overriding Bootstrap for RTL support
+.navbar-nav > li > a {
+  padding-bottom: 19px !important;
+  padding-top: 19px !important;
+}
+
 .btn, .navbar *{
   font-size: @fs_sm !important;
 }

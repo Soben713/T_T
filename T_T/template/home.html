@@ -1,21 +1,39 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block body %}
-    <h1>فروشگاه T_T</h1>
-    <div class="navbar navbar-inverse">
-        <div class="navbar-collapse collapse navbar-collapse-01">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#fakeLink">خانه</a>
-                    <ul>
-                        <li><a href="#s1">زیر منو</a></li>
-                        <li><a href="#s1">زیر منو</a></li>
+    <div class="header">
+        <div>T_T</div>
+        <label>فروشگاه لوازم فرهنگی</label>
+    </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">فروشگاه تی‌_تی</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">خانه</a></li>
+                <li><a href="#">جستجو</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">پایین‌رو<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">خانه</a></li>
                     </ul>
                 </li>
             </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="جستجو">
+                </div>
+                <button type="submit" class="btn btn-default">جستجو کن</button>
+            </form>
         </div>
-    </div>
-    این یک
-    <a class="btn btn-info">دکمه</a>
-    است
+    </nav>
 {% endblock %}
