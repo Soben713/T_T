@@ -5,12 +5,19 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     {% block css %}
+        <link href="{% static 'lib/Flat UI/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/Flat UI/bootstrap/css/bootstrap-docs.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/Flat UI/bootstrap/css/prettify.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/Flat UI/css/flat-ui.css' %}" rel="stylesheet">
     {% endblock %}
 
     {% block js %}
+        <script src="{% static 'lib/jquery-1.10.2.min.js' %}"></script>
     {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
 </body>
 </html>
