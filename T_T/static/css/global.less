@@ -13,8 +13,13 @@ body {
 }
 
 * {
-  font-family: Nassim !important;
-  font-weight: normal !important;
+  font-family: Nassim;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: Nassim;
+  font-weight: bold;
 }
 
 .header {
@@ -42,4 +47,20 @@ body {
 
 .btn, .navbar *{
   font-size: @fs_sm !important;
+}
+
+.carousel-inner {
+  .item {
+    background-color: gray;
+    height: 300px;
+    width: 100%;
+  }
+}
+
+div .panel {
+  &.slider {
+    .panel-body {
+      padding: 0;
+    }
+  }
 }
