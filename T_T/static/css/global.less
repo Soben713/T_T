@@ -4,8 +4,8 @@
   src: url('../font/bbc-nassim-regular.ttf')
 }
 
-@fs : 23px;
-@fs_sm: 20px;
+@fs : 18px;
+@fs_sm: 17px;
 
 body {
   direction: rtl;
@@ -22,27 +22,16 @@ h3 {
   font-weight: bold;
 }
 
-.header {
-  position: relative;
-  margin-top: 40px;
-  div {
-    font-family: Arial !important;
-    width: 100px;
-    height: 100px;
-    font-weight: bold !important;
-    font-size: 50px;
-    margin:auto;
-    z-index: 2;
-    display: inline-block;
-  }
-  label{
-  }
+.navbar-brand{
+  font-family: Arial !important;
+  color: #ffffff !important;
+  font-weight: bold;
 }
 
 //Overriding Bootstrap for RTL support
 .navbar-nav > li > a {
-  padding-bottom: 19px !important;
-  padding-top: 19px !important;
+  padding-bottom: 17px !important;
+  padding-top: 17px !important;
 }
 
 .btn, .navbar *{
@@ -67,4 +56,12 @@ div .panel {
 
 .container{
   margin-top:70px;
+}
+
+.footer {
+  width: auto;
+  text-align: center;
+  border-top: 1px solid lightgrey;
+  padding: 20px;
+  margin-top: 20px;
 }
