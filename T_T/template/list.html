@@ -2,160 +2,29 @@
 
 {% block body %}
 
-<div class="row">
+<div class="row" ng-controller="ProductListCtrl">
     <div class="col-md-8">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4" ng-repeat="product in data.productList">
                 <div class="thumbnail">
-                    <img src="..." alt="...">
+                    <img ng-src="[[product.picUrl]]" alt="...">
                     <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
+                        <h3>[[product.name]]</h3>
+                        <p>[[product.price]]</p>
                         <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                        <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
+                            <span class="glyphicon glyphicon-plus pull-right"></span>
                             <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
+                            <div class="clearfix"></div>
                         </p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>۴۵۰۰ تومان</p>
-                        <p>
-                        <span class="glyphicon glyphicon-plus pull-right">
-                        </span>
-                            <a href="#" class="btn btn-primary pull-left" role="button"> جزییات </a>
-                        <div class="clearfix"></div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <ul class="pagination pagination-centered">
-                <li><a href="#">&raquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&laquo;</a></li>
+            <ul class="pagination">
+                <li ng-repeat="page in pages" ng-class="{'active': page.active}">
+                    <a href="#" ng-click="changePage([[page.page]])">
+                        [[page.page]]
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

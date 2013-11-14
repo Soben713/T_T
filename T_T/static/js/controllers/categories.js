@@ -1,7 +1,5 @@
-//var eshop = angular.module('eshop', []);
-
-function WareListCtrl($scope, $http) {
-    $scope.selected = -1; // -1 if ALL
+T_T.controller('CategoriesCtrl', function ($scope, $http) {
+    $scope.selected = 0; // 0 if ALL
 
     $scope.list = {
         "result": 1,
@@ -18,10 +16,10 @@ function WareListCtrl($scope, $http) {
     };
 
     $scope.getSelected = function(){
-        if($scope.selected == -1)
+        if($scope.selected == 0)
             return {
                 "name": "همه‌‌ی موارد",
-                "id" : -1
+                "id" : 0
             };
         var ret;
         for(var ind=0; ind<$scope.list.categoryList.length; ind++)
@@ -53,4 +51,4 @@ function WareListCtrl($scope, $http) {
         error(function(data, status, headers, config){
             console.log("ERROR", data)
         });
-}
+});

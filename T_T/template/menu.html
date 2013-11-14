@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" >
+    <div class="collapse navbar-collapse" ng-controller="CategoriesCtrl">
 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -12,7 +12,7 @@
             <a class="navbar-brand" href="/home">T_T</a>
         </div>
 
-        <form class="navbar-form navbar-left" role="search" ng-controller="WareListCtrl">
+        <form class="navbar-form navbar-left" role="search" method="GET" action="/list/">
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     [[ getSelected().name ]]
@@ -20,22 +20,29 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#" ng-click="select(-1)">
+                        <span class="glyphicon glyphicon-ok" ng-if="selected==0"></span>
                         همه‌ی موارد
                     </a></li>
                     <li class="divider"></li>
                     <li class="dropdown-submenu" ng-repeat="category in firstLevel()">
-                        <a href="#" ng-click="select(category.id)">[[category.name]]</a>
+                        <a href="#" ng-click="select(category.id)">
+                            <span class="glyphicon glyphicon-ok" ng-if="selected==category.id"></span>
+                            [[category.name]]
+                        </a>
                         <ul class="dropdown-menu">
                             <li ng-repeat="child in getChildren(category.id)">
-                                <a href="#" ng-click="select(child.id)">[[child.name]]</a>
+                                <a href="#" ng-click="select(child.id)">
+                                    <span class="glyphicon glyphicon-ok" ng-if="selected==child.id"></span>
+                                    [[child.name]]
+                                </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" style="width: 300px"
-                       placeholder="اجناس را جستجو کنید">
+                <input type="text" name="search" class="form-control" style="width: 300px" placeholder="اجناس را جستجو کنید">
+                <input type="hidden" name="category" value="[[selected]]">
             </div>
         </form>
         <ul class="nav navbar-nav">

@@ -11,14 +11,17 @@
 //    return angular.attrMarkup('{{}}').call(this, value, name, element);
 //});
 
-var customInterpolationApp = angular.module('customInterpolationApp', []);
+window.T_T = angular.module('T_T', []);
 
-customInterpolationApp.config(function($interpolateProvider) {
+T_T.config(function($httpProvider, $interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
+    $httpProvider.defaults.transformRequest = function(data){
+        if (data === undefined) {
+            return data;
+        }
+        return $.param(data);
+    };
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 });
 
-
-customInterpolationApp.controller('DemoController', function DemoController() {
-    this.label = "This binding is brought you by // interpolation symbols.";
-});

@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html ng-app="customInterpolationApp">
+<html ng-app="T_T">
 
 <head>
     <title>{% block title %}T_T{% endblock %}</title>
@@ -17,12 +17,14 @@
         <script src="{% static 'lib/less-1.3.3.min.js' %}"></script>
         <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
         <script src="{% static 'lib/angular.js' %}"></script>
+        <script src="{% static 'js/utils/global.js' %}"></script>
         <script src="{% static 'js/utils/angular-tags.js' %}"></script>
         <script src="{% static 'js/controllers/categories.js' %}"></script>
+        <script src="{% static 'js/controllers/product-list.js' %}"></script>
     {% endblock %}
 </head>
 
-<body ng-app>
+<body>
 <div class="container">
     {% include "menu.html" %}
     {% block body %}
