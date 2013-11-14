@@ -1,9 +1,10 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html>
+<html ng-app="customInterpolationApp">
+
 <head>
-    <title>{% block title %}SALAM{% endblock %}</title>
+    <title>{% block title %}T_T{% endblock %}</title>
     {% block css %}
         <link href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'lib/bootstrap/dist/css/bootstrap-rtl.css' %}" rel="stylesheet">
@@ -14,8 +15,11 @@
         <script src="{% static 'lib/jquery-1.10.2.min.js' %}"></script>
         <script src="{% static 'lib/less-1.3.3.min.js' %}"></script>
         <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'lib/angular.js' %}"></script>
+        <script src="{% static 'js/utils/angular-tags.js' %}"></script>
     {% endblock %}
 </head>
+
 <body>
 <div class="container">
     {% block body %}
