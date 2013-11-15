@@ -2,10 +2,10 @@
 
 {% block body %}
 
-<div class="row">
-    <div class="col-md-8" ng-controller="ProductListCtrl">
+<div class="row" ng-controller="ProductListCtrl">
+    <div class="col-md-8">
         <div class="row">
-            <div class="col-sm-6 col-md-4" ng-repeat="product in data.productList">
+            <div class="col-sm-6 col-md-4" ng-repeat="product in productData.productList">
                 <div class="thumbnail">
                     <div class="img-wrapper">
                         <img ng-src="[[product.picUrl]]">
@@ -35,6 +35,47 @@
         </div>
     </div>
     <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-search"></span>
+                جستجو
+            </div>
+            <div class="panel-body">
+                <form class="form-inline" role="search">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" style="width:130px" data-toggle="dropdown">
+                            [[ getSelectedCategory().name ]]
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" ng-click="selectCategory(0)">
+                                <span class="glyphicon glyphicon-ok" ng-if="data.category==0"></span>
+                                همه‌ی موارد
+                            </a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-submenu" ng-repeat="c in getfirstLevelCategories()">
+                                <a href="#" ng-click="selectCategory(c.id)">
+                                    <span class="glyphicon glyphicon-ok" ng-if="data.category==c.id"></span>
+                                    [[c.name]]
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="child in getCategoryChildren(c.id)">
+                                        <a href="#" ng-click="selectCategory(child.id)">
+                                            <span class="glyphicon glyphicon-ok" ng-if="data.category==child.id"></span>
+                                            [[child.name]]
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="searchQuery" class="form-control" placeholder="اجناس را جستجو کنید"
+                                ng-model="searchQuery" ng-change="updateProductList()">
+                    </div>
+                </form>
+            </div>
+        </div>
         <cart></cart>
     </div>
 </div>

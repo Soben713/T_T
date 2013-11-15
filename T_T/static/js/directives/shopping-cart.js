@@ -16,8 +16,9 @@ T_T.directive('cart', function () {
 
             $scope.totalPrice = function(){
                 var ret = 0;
-                for(var i=0; i<$scope.data.cart.length; i++)
-                    ret+= $scope.data.cart[i].price;
+                if('cart' in $scope.data)
+                    for(var i=0; i<$scope.data.cart.length; i++)
+                        ret+= $scope.data.cart[i].price;
                 return ret;
             }
         },

@@ -1,31 +1,96 @@
 T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart',
     function ($scope, $http, $location, shoppingCart) {
-        var search = searchToObject(window.location.search);
-        var data = {};
 
-        data['search'] = search['search'] || "";
-        data['category'] = search['category'] || 0;
-        data['page'] = search['page'] || 1;
-        data['pageSize'] = 9;
+        $scope.data = {
+            category: 0,
+            page: 1,
+            pageSize: 9
+        };
+
+        /*
+         *
+         * Handling categories
+         *
+         */
+
+        $scope.categoryData = {
+            "result": 1,
+            "categoryList": [
+                {
+                    "name": "تست",
+                    "id": 1
+                }
+            ]
+        };
+
+        $scope.selectCategory = function(id){
+            $scope.data['category'] = id;
+            $scope.updateProductList();
+        };
+
+        $scope.getSelectedCategory = function(){
+            var ret = {
+                "name": "همه‌‌ی موارد",
+                "id" : 0
+            };
+
+            if($scope.data['category'] == 0)
+                return ret;
+            else
+                for(var ind=0; ind<$scope.categoryData.categoryList.length; ind++)
+                    if($scope.categoryData.categoryList[ind].id == $scope.data['category'])
+                        ret = $scope.categoryData.categoryList[ind];
+            return ret;
+        };
+
+        $scope.getfirstLevelCategories = function(){
+            var ret = [];
+            for(var ind=0; ind<$scope.categoryData.categoryList.length; ind++)
+                if(!("parent" in $scope.categoryData.categoryList[ind]))
+                    ret.push($scope.categoryData.categoryList[ind]);
+            return ret;
+        };
+
+        $scope.getCategoryChildren = function(cid){
+            var ret = [];
+            for(var ind=0; ind<$scope.categoryData.categoryList.length; ind++)
+                if($scope.categoryData.categoryList[ind].parent == cid)
+                    ret.push($scope.categoryData.categoryList[ind]);
+            return ret;
+        };
+
+        $http({method: 'POST', url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/category/list'}).
+            success(function(data, status, headers, config) {
+                $scope.categoryData = data;
+            });
+
+        /*
+         *
+         * Handling list
+         *
+         */
 
         $scope.pages = [
             {'page': 1, 'active': true}
         ];
-        $scope.page = data['page'];
 
-        $scope.data = {};
+        $scope.page = $scope.data['page'];
 
-        function requestData() {
-            data['page'] = $scope.page;
+        $scope.productData = {};
+
+        $scope.updateProductList = function() {
+            console.log($scope.searchQuery);
+            $scope.data['page'] = $scope.page;
+            $scope.data['search'] = $scope.searchQuery;
             var id = WaitMsg.add("درحال دریافت لیست محصولات");
             $http({
                 method: 'POST',
                 url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/product/list',
-                data: data
+                data: $scope.data
             }).success(function (data, status, headers, config) {
-                    $scope.data = data;
+                    $scope.productData = data;
                     $scope.pages = [];
-                    for (var i = 1; i * 9 < $scope.data.totalResults; i++) {
+                    for (var i = 1; i * 9 < $scope.productData.totalResults; i++) {
                         $scope.pages.push({
                             'page': i,
                             'active': (i == $scope.page)
@@ -35,18 +100,20 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
                 }).error(function(){
                     WaitMsg.error(id);
                 })
-        }
+        };
 
         $scope.changePage = function (page) {
             $scope.page = page;
-            $location.search('page', page);
-            requestData();
+            $scope.updateProductList();
         };
 
         $scope.addToCart = function (id) {
             shoppingCart.addToCart(id);
         };
 
-        requestData();
+        $scope.updateProductList();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 ]);
