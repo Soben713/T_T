@@ -66,7 +66,7 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
             }).success(function (data, status, headers, config) {
                     $scope.productData = data;
                     $scope.pages = [];
-                    for (var i = 1; i * 9 < $scope.productData.totalResults; i++) {
+                    for (var i = 1; (i-1) * 9 < $scope.productData.totalResults; i++) {
                         $scope.pages.push({
                             'page': i,
                             'active': (i == $scope.page)
