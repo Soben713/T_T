@@ -19,7 +19,7 @@
                             <a href="#" class="btn btn-primary btn-sm" role="button" ng-click="addToCart(product.id)">
                                 افزودن به سبد خرید
                             </a>
-                            <a href="#" class="btn btn-default btn-sm" role="button"> جزییات </a>
+                            <a href="/products/sample" class="btn btn-default btn-sm" role="button"> جزییات </a>
                             <div class="clearfix"></div>
                         </p>
                     </div>
@@ -41,37 +41,40 @@
                 جستجو
             </div>
             <div class="panel-body">
-                <form class="form-inline" role="search">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" style="width:130px" data-toggle="dropdown">
-                            [[ getSelectedCategory().name ]]
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" ng-click="selectCategory(0)">
-                                <span class="glyphicon glyphicon-ok" ng-if="data.category==0"></span>
-                                همه‌ی موارد
-                            </a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-submenu" ng-repeat="c in getfirstLevelCategories()">
-                                <a href="#" ng-click="selectCategory(c.id)">
-                                    <span class="glyphicon glyphicon-ok" ng-if="data.category==c.id"></span>
-                                    [[c.name]]
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="child in getCategoryChildren(c.id)">
-                                        <a href="#" ng-click="selectCategory(child.id)">
-                                            <span class="glyphicon glyphicon-ok" ng-if="data.category==child.id"></span>
-                                            [[child.name]]
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <form class="form" role="search" ng-submit="search()">
                     <div class="form-group">
                         <input type="text" name="searchQuery" class="form-control" placeholder="اجناس را جستجو کنید"
-                                ng-model="searchQuery" ng-change="search()">
+                                ng-model="searchQuery">
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" style="width:130px" data-toggle="dropdown">
+                                [[ getSelectedCategory().name ]]
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" ng-click="selectCategory(0)">
+                                    <span class="glyphicon glyphicon-ok" ng-if="data.category==0"></span>
+                                    همه‌ی موارد
+                                </a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu" ng-repeat="c in category.getfirstLevelCategories()">
+                                    <a href="#" ng-click="selectCategory(c.id)">
+                                        <span class="glyphicon glyphicon-ok" ng-if="data.category==c.id"></span>
+                                        [[c.name]]
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="child in category.getCategoryChildren(c.id)">
+                                            <a href="#" ng-click="selectCategory(child.id)">
+                                                <span class="glyphicon glyphicon-ok" ng-if="data.category==child.id"></span>
+                                                [[child.name]]
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <input class="pull-left btn btn-primary" type="submit" value="جستجو کن">
                     </div>
                 </form>
             </div>

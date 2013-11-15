@@ -1,8 +1,13 @@
-T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart',
-    function ($scope, $http, $location, shoppingCart) {
+T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart', 'category',
+    function ($scope, $http, $location, shoppingCart, category) {
 
+        var search = searchToObject(window.location.search);
+
+        $scope.category = category;
+
+        $scope.searchQuery = ('search' in search ? search['search'] : "");
         $scope.data = {
-            category: 0,
+            category: ('category' in search ? search['category'] : 0),
             page: 1,
             pageSize: 9
         };
@@ -12,16 +17,6 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
          * Handling categories
          *
          */
-
-        $scope.categoryData = {
-            "result": 1,
-            "categoryList": [
-                {
-                    "name": "تست",
-                    "id": 1
-                }
-            ]
-        };
 
         $scope.selectCategory = function(id){
             $scope.data['category'] = id;
@@ -38,32 +33,12 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
             if($scope.data['category'] == 0)
                 return ret;
             else
-                for(var ind=0; ind<$scope.categoryData.categoryList.length; ind++)
-                    if($scope.categoryData.categoryList[ind].id == $scope.data['category'])
-                        ret = $scope.categoryData.categoryList[ind];
+                for(var ind=0; ind<category.data.categoryList.length; ind++)
+                    if(category.data.categoryList[ind].id == $scope.data['category'])
+                        ret = category.data.categoryList[ind];
             return ret;
         };
 
-        $scope.getfirstLevelCategories = function(){
-            var ret = [];
-            for(var ind=0; ind<$scope.categoryData.categoryList.length; ind++)
-                if(!("parent" in $scope.categoryData.categoryList[ind]))
-                    ret.push($scope.categoryData.categoryList[ind]);
-            return ret;
-        };
-
-        $scope.getCategoryChildren = function(cid){
-            var ret = [];
-            for(var ind=0; ind<$scope.categoryData.categoryList.length; ind++)
-                if($scope.categoryData.categoryList[ind].parent == cid)
-                    ret.push($scope.categoryData.categoryList[ind]);
-            return ret;
-        };
-
-        $http({method: 'POST', url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/category/list'}).
-            success(function(data, status, headers, config) {
-                $scope.categoryData = data;
-            });
 
         /*
          *
