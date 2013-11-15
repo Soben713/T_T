@@ -7,11 +7,11 @@
 {% block js %}
     {{ block.super }}
     <script>
-    $(document).ready(function(){
-        $('.carousel').carousel({
-            interval: 2000
-        }).carousel('cycle');
-    });
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 2000
+            }).carousel('cycle');
+        });
     </script>
 {% endblock %}
 
@@ -30,7 +30,8 @@
                             <input type="hidden" name="category" value="[[selected]]">
                         </div>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" style="width:130px" data-toggle="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle" style="width:130px"
+                                    data-toggle="dropdown">
                                 [[ getSelectedCategory().name ]]
                                 <span class="caret"></span>
                             </button>
@@ -81,19 +82,33 @@
                             <div class="item active">
                                 {#                                <img src="..." alt="...">#}
                                 <div class="carousel-caption">
-                                    <h3>پیرهن مردانه</h3>
+                                    <img class="img-circle" width="150" height="150"
+                                         src="http://www.albasco.com/media/catalog/product/cache/4/small_image/227x227/9df78eab33525d08d6e5fb8d27136e95/3/0/30014005_1_1.jpg">
+
+                                    <a href="/products/sample"><h3>پیرهن مردانه</h3></a>
+
                                     <p>پیرهن‌های اعلای مردانه با قیمتی باور نکردنی</p>
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="carousel-caption">
-                                    <h3>لباس زنانه</h3>
+                                    <img class="img-circle" width="150" height="150"
+                                         src="http://www.albasco.com/media/catalog/product/cache/4/small_image/227x227/9df78eab33525d08d6e5fb8d27136e95/1/_/1_3_20.jpg">
+                                    <a href="/products/sample">
+                                        <h3>مانتو راه راه نیکو طوس</h3>
+                                    </a>
+
                                     <p>پیرهن‌های اعلای مردانه با قیمتی باور نکردنی</p>
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="carousel-caption">
-                                    <h3>جوراب</h3>
+                                    <img class="img-circle" width="150" height="150"
+                                         src="http://www.albasco.com/media/catalog/product/cache/4/small_image/227x227/9df78eab33525d08d6e5fb8d27136e95/1/2/12909_1.jpg">
+                                    <a href="/products/sample">
+                                        <h3>تی شرت مردانه جودون آج</h3>
+                                    </a>
+
                                     <p>پیرهن‌های اعلای مردانه با قیمتی باور نکردنی</p>
                                 </div>
                             </div>
