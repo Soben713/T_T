@@ -2,50 +2,69 @@
 {% load staticfiles %}
 
 {% block body %}
-
-<div class="row">
-    <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                محصولات مرتبط
+<div ng-controller="CommentCtrl">
+    <div class="row">
+        <div class="col-md-3">
+            <div style="margin-bottom: 20px">
+                <a href="#"> <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" class="img-responsive" alt="Responsive image"></a>
+                <h3 style="text-align: center">
+                    راه آبی ابریشم
+                </h3>
+                <a href="#" class="btn btn-primary pull-left" role="button" style="text-align: center">
+                    اضافه کردن به سبد
+                </a>
+                <div class="clearfix"></div>
             </div>
-            <div class="panel panel-body">
-                <div class="well well-sm">
-                    راه قرمز ابریشم
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    محصولات مرتبط
                 </div>
-                <div class="well well-sm">
-                راه آبی پنبه
+                <div class="panel panel-body">
+                    <div class="well well-sm">
+                        راه قرمز ابریشم
+                    </div>
+                    <div class="well well-sm">
+                        راه آبی پنبه
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="panel  panel-default">
-            <div class="panel-heading">
-                مشخصات محصول
+        <div class="col-md-5">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    مشخصات محصول
+                </div>
+                <div class="panel-body">
+                    نام فیلم: راه آبی ابریشم
+                    <hr/>
+                    کارگردان:حسن بشکوفه
+                    <hr/>
+                    نویسنده:محمدرضا بزرگ‌نیا
+                    <hr/>
+                    بازیگران: داریوش ارجمند- بهرام رادان- پگاه آهنگرانی
+                    <hr/>
+                    قیمت: ۲۰۰۰تومان
+                </div>
             </div>
-            <div class="panel-body">
-                نام فیلم: راه آبی ابریشم
-             <hr/>
-کارگردان:حسن بشکوفه
-            <hr/>
-               نویسنده:محمدرضا بزرگ‌نیا
-             <hr/>
-بازیگران: داریوش ارجمند- بهرام رادان- پگاه آهنگرانی
-             <hr/>
 
-                قیمت: ۲۰۰۰تومان
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    نظرات:
+                </div>
+                <div class="panel-body">
+                    <ul class="tag-group">
+                        <li class="tag-group-item" ng-repeat="child in list.commentList">
+                            [[  child.name |limitTo:20 ]] :
+                            <br>
+                            [[ child.message | limitTo:50 ]]
+
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <a href="#"> <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" class="img-responsive" alt="Responsive image"></a>
-        <h3 style="text-align: center">
-        راه آبی ابریشم
-        </h3>
-        <a href="#" class="btn btn-primary pull-left" role="button" style="text-align: center">
-            اضافه کردن به سبد
-        </a>
+        <cart class="col-md-4"></cart>
+
     </div>
 </div>
 
