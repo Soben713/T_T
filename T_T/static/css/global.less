@@ -96,3 +96,25 @@ div .panel {
     }
   }
 }
+
+.wait-list {
+  position: fixed;
+  width: 300px;
+  left: 20px;
+  bottom: 20px;
+  .wait-item {
+    width: 100%;
+    background-color: #ffeda5;
+    border: 1px solid darken(#ffeda5, 10%);
+    padding: 10px;
+    margin-top: 10px;
+    &.error {
+      background-color: #ffc5d9;
+      border: 1px solid darken(#ffc5d9, 10%);
+    }
+    &.success {
+      background-color: #94d099;
+      border: 1px solid darken(#94d099, 10%);
+    }
+  }
+}

@@ -44,11 +44,14 @@ T_T.controller('CategoriesCtrl', function ($scope, $http) {
         return ret;
     };
 
+    var id = WaitMsg.add("در حال دریافت دسته‌ها");
     $http({method: 'POST', url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/category/list'}).
         success(function(data, status, headers, config) {
             $scope.list = data;
+            WaitMsg.success(id);
         }).
         error(function(data, status, headers, config){
-            console.log("ERROR", data)
+            console.log("ERROR", data);
+            WaitMsg.error(id);
         });
 });
