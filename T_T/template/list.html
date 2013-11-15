@@ -2,8 +2,8 @@
 
 {% block body %}
 
-<div class="row" ng-controller="ProductListCtrl">
-    <div class="col-md-8">
+<div class="row">
+    <div class="col-md-8" ng-controller="ProductListCtrl">
         <div class="row">
             <div class="col-sm-6 col-md-4" ng-repeat="product in data.productList">
                 <div class="thumbnail">
@@ -11,12 +11,12 @@
                         <img ng-src="[[product.picUrl]]">
                     </div>
                     <div class="caption">
-                        <label>[[product.name | limitTo:30 ]]</label>
+                        <label>[[product.name | limitTo:22 ]]</label>
                         <p>[[product.price]]
                         ریال
                         </p>
                         <p>
-                            <a href="#" class="btn btn-primary btn-sm" role="button">
+                            <a href="#" class="btn btn-primary btn-sm" role="button" ng-click="addToCart(product.id)">
                                 افزودن به سبد خرید
                             </a>
                             <a href="#" class="btn btn-default btn-sm" role="button"> جزییات </a>
@@ -27,7 +27,7 @@
             </div>
             <ul class="pagination">
                 <li ng-repeat="page in pages" ng-class="{'active': page.active}">
-                    <a href="#" ng-click="changePage([[page.page]])">
+                    <a href="#" ng-click="changePage(page.page)">
                         [[page.page]]
                     </a>
                 </li>
@@ -35,41 +35,28 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" ng-controller="ShoppingCartCtrl">
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-shopping-cart"></span>
                 سبد خرید
             </div>
             <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                             مانتو
-                        <span class="glyphicon glyphicon-remove pull-left "></span>
-                    </li>
-
-                    <li class="list-group-item">
-                  جوراب
-                        <span class="glyphicon glyphicon-remove pull-left "></span>
-                    </li>
-
-                    <li class="list-group-item">
-                   شلوار کردی راه راه آبی آسمانی
-                        <span class="glyphicon glyphicon-remove pull-left "></span>
-                    </li>
-
-                    <li class="list-group-item">
-مانتو شیش جیب زشت ث
-                        <span class="glyphicon glyphicon-remove pull-left "></span>
+                <ul class="tag-group">
+                    <li class="tag-group-item" ng-repeat="product in data.cart">
+                        [[product.name | limitTo:25]]
+                        <span class="label label-info">[[product.price]] ریال</span>
+                        <a class="btn btn-link" ng-click="removeFromCart(product.id)">
+                            <span class="glyphicon glyphicon-remove pull-left"></span>
+                        </a>
                     </li>
                 </ul>
-
             </div>
             <div class="panel-footer">
                 <p class="pull-right">
                     جمع فاکتور:
                 </p>
                 <p class="pull-left">
-                    ۴۵۰۰
+                    [[totalPrice()]] ریال
                 </p>
                 <div class="clearfix"></div>
             </div>
