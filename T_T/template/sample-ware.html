@@ -5,15 +5,16 @@
 <div ng-controller="CommentCtrl">
     <div class="row">
         <div class="col-md-3">
-            <div style="margin-bottom: 20px">
-                <a href="#"> <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" class="img-responsive" alt="Responsive image"></a>
-                <h3 style="text-align: center">
-                    راه آبی ابریشم
-                </h3>
-                <a href="#" class="btn btn-primary pull-left" role="button" style="text-align: center">
-                    اضافه کردن به سبد
-                </a>
-                <div class="clearfix"></div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="#"> <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" class="img-responsive" alt="Responsive image"></a>
+                    <h3 style="text-align: center">
+                        راه آبی ابریشم
+                    </h3>
+                    <a href="#" class="btn btn-primary btn-block" role="button">
+                        اضافه کردن به سبد
+                    </a>
+                </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -63,7 +64,9 @@
                 </div>
             </div>
         </div>
-        <cart class="col-md-4"></cart>
+        <div  class="col-md-4">
+            <cart></cart>
+        </div>
 
     </div>
 </div>
