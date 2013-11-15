@@ -14,7 +14,7 @@ T_T.controller('AddProduct', ['$scope', 'category', '$http',
         $scope.imageFormSubmitted = function(){
             console.log('here');
             $('#image-form').ajaxSubmit({
-                url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/product/uploadimage',
+                url: 'http://webproject.roohy.me/ajax/2/90109903/product/uploadimage',
                 type: 'POST',
                 success: function(response){
                     $scope.$apply(function(){
@@ -38,11 +38,11 @@ T_T.controller('AddProduct', ['$scope', 'category', '$http',
         };
 
         $scope.formSubmitted = function(){
-            if($scope.picId){
+            if($scope.picId && $scope.image.x1){
                 console.log($scope.name, $scope.desc);
                 $http({
                     method: 'POST',
-                    url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/product/add',
+                    url: 'http://webproject.roohy.me/ajax/2/90109903/product/add',
                     data: {
                         "name": $scope.name,
                         "description": $scope.desc,

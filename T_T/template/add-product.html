@@ -82,10 +82,6 @@
                                     <input type="submit" class="btn btn-primary" value="آپلود">
                                 </form>
                                 <div ng-if="picUrl!=null">
-                                    [[image.x1]]
-                                    [[image.y1]]
-                                    [[image.width]]
-                                    [[image.height]]
                                     <img ng-src="[[picUrl]]" id="to-be-cropped">
                                 </div>
                             </div>
@@ -94,7 +90,10 @@
                         <div class="alert alert-warning" ng-if="picId == null">
                             برای افزودن محصول ابتدا تصویر محصول را آپلود کنید.
                         </div>
-                        <input type="submit" form="add-product" class="btn btn-primary" value="افزودن" ng-if="picId != null">
+                        <div class="alert alert-warning" ng-if="picId !== null && image.x1==null">
+                            پیش از افزودن تصویر را کراپ کنید
+                        </div>
+                        <input type="submit" form="add-product" class="btn btn-primary" value="افزودن" ng-if="picId != null && image.x1!= null">
                 </div>
             </div>
         </div>

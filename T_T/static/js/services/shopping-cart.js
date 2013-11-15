@@ -20,21 +20,21 @@ T_T.factory('shoppingCart', function ($rootScope, $http) {
     };
 
     shoppingCart.addToCart = function (id) {
-        var url = 'http://webproject.roohy.me/ajax/1/901099039090۹۰/cart/add';
+        var url = 'http://webproject.roohy.me/ajax/2/90109903/cart/add';
         this._updateData(url, {
             'productId': id
         }, 'در حال افزودن به سبد خرید')
     };
 
     shoppingCart.removeFromCart = function (id) {
-        var url = 'http://webproject.roohy.me/ajax/1/901099039090۹۰/cart/remove';
+        var url = 'http://webproject.roohy.me/ajax/2/90109903/cart/remove';
         this._updateData(url, {
             'productId': id
         }, 'در حال حذف از سبد خرید')
     };
 
     shoppingCart.fetchData = function () {
-        var url = 'http://webproject.roohy.me/ajax/1/901099039090۹۰/cart/list';
+        var url = 'http://webproject.roohy.me/ajax/2/90109903/cart/list';
         $http({
             method: 'POST', url: url
         }).success(function (data, status, headers, config) {

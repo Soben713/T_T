@@ -61,7 +61,7 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
             var id = WaitMsg.add("درحال دریافت لیست محصولات");
             $http({
                 method: 'POST',
-                url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/product/list',
+                url: 'http://webproject.roohy.me/ajax/2/90109903/product/list',
                 data: $scope.data
             }).success(function (data, status, headers, config) {
                     $scope.productData = data;

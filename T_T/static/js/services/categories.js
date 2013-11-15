@@ -27,7 +27,7 @@ T_T.factory('category', function ($rootScope, $http) {
         return ret;
     };
 
-    $http({method: 'POST', url: 'http://webproject.roohy.me/ajax/1/901099039090۹۰/category/list'}).
+    $http({method: 'POST', url: 'http://webproject.roohy.me/ajax/2/90109903/category/list'}).
         success(function(data, status, headers, config) {
             category.data = data;
         });

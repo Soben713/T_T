@@ -11,7 +11,7 @@
             <h4 class="modal-title">Modal title</h4>
         </div>
         <div class="modal-body">
-            <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" style=" margin: auto">
+            <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" style=" margin: auto; display: block">
         </div>
     </div><!-- /.modal -->
 
@@ -76,11 +76,15 @@
 
                         </li>
                     </ul>
-
-                    <form ng-submit="addComment()">
-                        <textarea type="text" size="20" ng-model="name" placeholder="نام"></textarea>
-                        <input type="text" size="45" ng-model="comment" placeholder="نظر">
-                        <input class="btn-primary" type="submit" value="نظر بدهید">
+                    <hr>
+                    <form ng-submit="addComment()" class="form">
+                        <div class="form-group">
+                            <input class="form-control" type="text" size="20" ng-model="name" placeholder="نام">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" size="45" ng-model="comment" placeholder="نظر"></textarea>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="نظر بدهید">
                     </form>
 
                 </div>
