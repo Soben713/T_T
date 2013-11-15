@@ -25,6 +25,7 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
 
         $scope.selectCategory = function(id){
             $scope.data['category'] = id;
+            $scope.page = 1;
             $scope.updateProductList();
         };
 
@@ -100,6 +101,11 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
                 }).error(function(){
                     WaitMsg.error(id);
                 })
+        };
+
+        $scope.search = function(){
+            $scope.page = 1;
+            $scope.updateProductList();
         };
 
         $scope.changePage = function (page) {
