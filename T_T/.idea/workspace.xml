@@ -5,8 +5,10 @@
     <ignored path="T_T.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/comment.js" changelist="b88e7791-a30c-4e3b-be6a-a704214b6b39" time="1384516435381" ignored="false" />
-    <file path="/sample-ware.html" changelist="b88e7791-a30c-4e3b-be6a-a704214b6b39" time="1384522443877" ignored="false" />
+    <file path="/sample-ware.html" changelist="b88e7791-a30c-4e3b-be6a-a704214b6b39" time="1384532214263" ignored="false" />
     <file path="/base.html" changelist="b88e7791-a30c-4e3b-be6a-a704214b6b39" time="1384517298713" ignored="false" />
+    <file path="/sample-ware.js" changelist="b88e7791-a30c-4e3b-be6a-a704214b6b39" time="1384527020928" ignored="false" />
+    <file path="/list.html" changelist="b88e7791-a30c-4e3b-be6a-a704214b6b39" time="1384530157506" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,7 @@
       <file leaf-file-name="sample-ware.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/controllers/sample-ware.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="3" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0">
+            <state line="18" column="38" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -35,7 +37,7 @@
       <file leaf-file-name="product-list.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/controllers/product-list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="0" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0">
+            <state line="71" column="56" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -44,7 +46,7 @@
       <file leaf-file-name="list.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="954" selection-end="1010" vertical-scroll-proportion="0.0">
+            <state line="4" column="13" selection-start="58" selection-end="58" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -53,7 +55,18 @@
       <file leaf-file-name="sample-ware.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/template/sample-ware.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="25" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.5767196">
+            <state line="13" column="97" selection-start="549" selection-end="549" vertical-scroll-proportion="0.35198557">
+              <folding>
+                <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="21" selection-start="764" selection-end="764" vertical-scroll-proportion="-7.5">
               <folding />
             </state>
           </provider>
@@ -62,7 +75,7 @@
       <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="7" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
+            <state line="29" column="7" selection-start="1563" selection-end="1563" vertical-scroll-proportion="-18.125">
               <folding />
             </state>
           </provider>
@@ -80,6 +93,8 @@
       <list>
         <option value="$PROJECT_DIR$/template/base.html" />
         <option value="$PROJECT_DIR$/static/js/controllers/comment.js" />
+        <option value="$PROJECT_DIR$/static/js/controllers/sample-ware.js" />
+        <option value="$PROJECT_DIR$/template/list.html" />
         <option value="$PROJECT_DIR$/template/sample-ware.html" />
       </list>
     </option>
@@ -116,6 +131,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,7 +268,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,12 +363,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2632831" sideWeight="0.9549114" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2632831" sideWeight="0.9549114" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -441,7 +456,9 @@
     <entry file="file://$PROJECT_DIR$/template/sample-ware.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -461,7 +478,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -476,50 +493,52 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/menu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/controllers/product-list.js">
+    <entry file="file://$PROJECT_DIR$/template/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0">
+        <state line="4" column="13" selection-start="58" selection-end="58" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/base.html">
+    <entry file="file://$PROJECT_DIR$/static/js/controllers/product-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="7" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0">
+        <state line="71" column="56" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/controllers/sample-ware.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="3" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0">
+        <state line="18" column="38" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/list.html">
+    <entry file="file://$PROJECT_DIR$/template/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="954" selection-end="1010" vertical-scroll-proportion="0.0">
+        <state line="29" column="7" selection-start="1563" selection-end="1563" vertical-scroll-proportion="-18.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="21" selection-start="764" selection-end="764" vertical-scroll-proportion="-7.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/sample-ware.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="25" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.5767196">
-          <folding />
+        <state line="13" column="97" selection-start="549" selection-end="549" vertical-scroll-proportion="0.35198557">
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

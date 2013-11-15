@@ -10,6 +10,17 @@ T_T.controller('CommentCtrl', function ($scope, $http) {
         ]
     };
 
+    $scope.addComment = function() {
+        $scope.list.commentList.push({name:$scope.name, message:$scope.comment});
+        $scope.name="";
+        $scope.comment="";
+    };
+
+    $scope.addToCart = function (id) {
+        shoppingCart.addToCart(id);
+    };
+
+
     var id = WaitMsg.add("در حال دریافت کامنت ها");
     $http({method: 'POST', url: 'http://webproject.roohy.me/ajax/1/9090190109903/comment/list'}).
         success(function(data, status, headers, config) {

@@ -2,16 +2,31 @@
 {% load staticfiles %}
 
 {% block body %}
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal"  aria-hidden="true"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+            <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" style=" margin: auto">
+        </div>
+    </div><!-- /.modal -->
+
 <div ng-controller="CommentCtrl">
     <div class="row">
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="#"> <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" class="img-responsive" alt="Responsive image"></a>
+                    <a data-toggle="modal" href="#myModal">
+                        <img src="http://jaberangi.ir/tvtop/cinemaiirani/rahe%20abrishame%20abi.jpg" class="img-responsive" alt="Responsive image" >
+                    </a>
                     <h3 style="text-align: center">
                         راه آبی ابریشم
                     </h3>
-                    <a href="#" class="btn btn-primary btn-block" role="button">
+                    <a href="#" class="btn btn-primary btn-block" role="button" ng-click="addToCart(3)">
                         اضافه کردن به سبد
                     </a>
                 </div>
@@ -61,6 +76,13 @@
 
                         </li>
                     </ul>
+
+                    <form ng-submit="addComment()">
+                        <textarea type="text" size="20" ng-model="name" placeholder="نام"></textarea>
+                        <input type="text" size="45" ng-model="comment" placeholder="نظر">
+                        <input class="btn-primary" type="submit" value="نظر بدهید">
+                    </form>
+
                 </div>
             </div>
         </div>
