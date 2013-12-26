@@ -67,11 +67,18 @@
                 </div>
                 <div class="panel-body">
                     <ul class="tag-group">
-                        <li class="tag-group-item" ng-repeat="child in list.commentList">
-                            [[  child.name |limitTo:20 ]] :
+                        <li class="tag-group-item" ng-repeat="comment in getCurrentList().commentList">
+                            [[  comment.name |limitTo:20 ]] :
                             <br>
-                            [[ child.message | limitTo:50 ]]
+                            [[ comment.message | limitTo:50 ]]
 
+                        </li>
+                    </ul>
+                    <ul class="pagination">
+                        <li ng-repeat="page in pages" ng-class="{'active': getActive(page)}">
+                            <a href="#" ng-click="changePage(page.pageNum)">
+                                [[page.pageNum]]
+                            </a>
                         </li>
                     </ul>
                     <hr>
