@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home/$', TemplateView.as_view(template_name='home.html')),
     url(r'^list/$', TemplateView.as_view(template_name='list.html')),
-    url(r'^products/sample/$', TemplateView.as_view(template_name='sample-ware.html')),
+    url(r'^products/sample/$', TemplateView.as_view(template_name='sample-product.html')),
     url(r'^moderate/add-product/$', TemplateView.as_view(template_name='add-product.html')),
 )
