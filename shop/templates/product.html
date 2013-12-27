@@ -36,12 +36,11 @@
                     محصولات مرتبط
                 </div>
                 <div class="panel-body">
-                    <div><a class="btn btn-link">
-                        راه قرمز ابریشم
+                    {% for product in product.get_related_objects %}
+                    <div><a class="btn btn-link" href="{% url 'product' product.pk %}">
+                        {{ product.name }}
                     </a></div>
-                    <div><a class="btn btn-link">
-                        راه قرمز ابریشم
-                    </a></div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

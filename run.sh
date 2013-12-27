@@ -1,1 +1,1 @@
-python3 manage.py runserver 9090
+./manage.py runserver 9090
