@@ -15,7 +15,7 @@ class Product(models.Model):
     creation_time = models.DateTimeField()
     price = models.IntegerField()
     category = models.ForeignKey(Category)
-    image = models.CharField(max_length=20)
+    image = models.FileField(upload_to='thumbnail/')  # FileField because PIL is not python3 compatible!
 
     def __unicode__(self):
         return self.name
@@ -23,7 +23,7 @@ class Product(models.Model):
 
 class SliderItem(models.Model):
     product = models.ForeignKey(Product)
-    slider_image = models.CharField(max_length=20)
+    slider_image = models.FileField(upload_to='slider/')
 
     def __unicode__(self):
         return self.product.name

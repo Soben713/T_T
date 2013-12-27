@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 from django.views.generic.base import TemplateView
+from T_T import settings
 
 admin.autodiscover()
 
@@ -16,3 +17,8 @@ urlpatterns = patterns('',
     url(r'^products/sample/$', TemplateView.as_view(template_name='sample-product.html')),
     url(r'^moderate/add-product/$', TemplateView.as_view(template_name='add-product.html')),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('', (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+                                'document_root': settings.MEDIA_ROOT})
+    )

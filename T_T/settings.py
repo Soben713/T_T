@@ -78,6 +78,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(APP_DIR, 'media')
+
 # Templates
 TEMPLATE_DIRS = (
     os.path.join(APP_DIR, 'template'),
