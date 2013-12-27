@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 from T_T import settings
-from shop.views import home
+from shop.views import home, product, product_list
 
 admin.autodiscover()
 
@@ -15,8 +15,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home),
     url(r'^list/$', TemplateView.as_view(template_name='list.html')),
-    url(r'^products/sample/$', TemplateView.as_view(template_name='sample-product.html')),
+    url(r'^product/(?P<pk>\d+)/$', product, name='product'),
     url(r'^moderate/add-product/$', TemplateView.as_view(template_name='add-product.html')),
+    url(r'^ajax/product/list$', product_list, name='product_list')
 )
 
 if settings.DEBUG:
