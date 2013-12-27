@@ -85,7 +85,7 @@
                                     <div class="carousel-caption">
                                         <img class="img-circle" width="150" height="150"
                                              src="{{ MEDIA_URL }}{{ item.slider_image }}">
-                                        <a href="/products/sample">
+                                        <a href="{% url 'product' item.product.pk %}">
                                             <h3>{{ item.product.name }}</h3>
                                         </a>
                                         <p>{{ item.product.description }}</p>
