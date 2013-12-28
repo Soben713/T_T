@@ -5,12 +5,17 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
 
         $scope.advancedSearch = false;
 
-
+        $scope.to_date="";
+        $scope.from_date="";
+        $scope.seller="";
+        $scope.to_price="";
+        $scope.from_price="";
         $scope.searchQuery = ('search' in search ? search['search'] : "");
         $scope.data = {
             category: ('category' in search ? search['category'] : 0),
             page: 1,
             pageSize: 9
+
         };
 
         /*
@@ -58,6 +63,14 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
             console.log($scope.searchQuery);
             $scope.data['page'] = $scope.page;
             $scope.data['search'] = $scope.searchQuery;
+            $scope.data['to_date']=$scope.to_date;
+//          alert(  Date.jalaliConverter.jalaliToGregorian($scope.to_date));
+//              alert($scope.searchQuery);
+              alert($scope.to_date);
+            $scope.data['from_date']=$scope.from_date;
+            $scope.data['to_price']=$scope.to_price;
+            $scope.data['from_price']=$scope.from_price;
+
             var id = WaitMsg.add("درحال دریافت لیست محصولات");
             $http({
                 method: 'POST',

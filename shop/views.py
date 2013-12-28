@@ -35,7 +35,6 @@ def product_list(request):
     data = request.POST
     page = int(data['page'])
     page_size = int(data['pageSize'])
-
     response = {
         'result': 1,
         'page': page,
@@ -43,6 +42,7 @@ def product_list(request):
     }
 
     results = Product.objects.filter(Q(name__contains=data['search']) | Q(description__contains=data['search']))
+
     response['totalResults'] = results.count()
     results = results[(page - 1) * page_size: page * page_size]
 
