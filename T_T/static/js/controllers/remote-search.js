@@ -7,7 +7,6 @@ T_T.controller('RemoteSearch', ['$scope',
         $scope.selectCategory = function(id, name){
             $scope.selected = id;
             $scope.name=name;
-            alert(name);
         };
 
         $scope.getSelectedCategory = function(){
@@ -20,7 +19,6 @@ T_T.controller('RemoteSearch', ['$scope',
                 ret.name=$scope.name;
                 ret.selected=$scope.selected;
             }
-alert(ret);
             return ret;
         };
     }

@@ -45,15 +45,14 @@
                                 {% for item in  first_level_category %}
 
                                     <li class="dropdown-submenu">
-                                        <a href="#" ng-click="selectCategory({{ item.id }}, {{ item.name }})">
+                                        <a href="#" ng-click="selectCategory({{ item.id }}, '{{ item.name }}')">
                                             <span class="glyphicon glyphicon-ok" ng-if="selected=={{ item.id }}"></span>
                                             {{ item.name }}
-
                                         </a>
                                         <ul class="dropdown-menu">
                                             {% for child in item.children.all %}
                                                 <li>
-                                                    <a href="#" ng-click="selectCategory({{ child.id }}, {{ child.name }})">
+                                                    <a href="#" ng-click="selectCategory({{ child.id }}, '{{ child.name }}')">
                                                         <span class="glyphicon glyphicon-ok" ng-if="selected=={{ child.id }}"></span>
                                                         {{child.name}}
                                                     </a>
