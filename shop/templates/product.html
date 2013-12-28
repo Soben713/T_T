@@ -35,11 +35,9 @@
                 <div class="panel-heading">
                     محصولات مرتبط
                 </div>
-                <div class="panel-body">
+                <div class="panel-body list">
                     {% for product in product.get_related_objects %}
-                    <div><a class="btn btn-link" href="{% url 'product' product.pk %}">
-                        {{ product.name }}
-                    </a></div>
+                        <a href="{% url 'product' product.pk %}"> {{ product.name }} </a>
                     {% endfor %}
                 </div>
             </div>

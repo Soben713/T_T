@@ -3,6 +3,8 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
 
         var search = searchToObject(window.location.search);
 
+        $scope.advancedSearch = false;
+
         $scope.category = category;
 
         $scope.searchQuery = ('search' in search ? search['search'] : "");
@@ -76,6 +78,14 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
                 }).error(function(){
                     WaitMsg.error(id);
                 })
+        };
+
+        $scope.activateAdvancedSearch = function() {
+            $scope.advancedSearch = true;
+        };
+
+        $scope.deactivateAdvancedSearch = function() {
+            $scope.advancedSearch = false;
         };
 
         $scope.search = function(){
