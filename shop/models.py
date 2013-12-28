@@ -1,4 +1,5 @@
 import random
+from django.core.exceptions import ValidationError
 from django.db import models
 import re
 
@@ -9,6 +10,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        if self.parent is not None and self.parent.parent is not None:
+            raise ValidationError("Depth limit exceeded")
 
 
 class Product(models.Model):
