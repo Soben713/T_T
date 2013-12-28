@@ -61,39 +61,77 @@
                                 ng-model="searchQuery">
                     </div>
                     <div class="form-group" ng-if="advancedSearch==true">
-                        <input type="text" name="date" class="form-control" placeholder="تاریخ شمسی"
-                               ng-model="date">
+                        <input type="text" name="from_date" class="form-control" placeholder="از تاریخ"
+                               ng-model="from_date">
                     </div>
+
+                    <div class="form-group" ng-if="advancedSearch==true">
+                        <input type="text" name="to_date" class="form-control" placeholder="تا تاریخ"
+                               ng-model="to_date">
+                    </div>
+
+                    <div class="form-group" ng-if="advancedSearch==true">
+                        <input type="text" name="from_price" class="form-control" placeholder="از قیمت"
+                               ng-model="from_price">
+                    </div>
+
+                    <div class="form-group" ng-if="advancedSearch==true">
+                        <input type="text" name="to_price" class="form-control" placeholder="تا قیمت"
+                               ng-model="to_price">
+                    </div>
+                    <div class="form-group" ng-if="advancedSearch==true" ng-model="seller">
+                        <select class="form-control" name="seller" style="margin-top: 20px">
+                            <option value="">
+                                All
+                            </option>
+                            <option  value="mahsa">
+                                mahsa
+                            </option>
+                            <option value="soheil">
+                                soheil
+                            </option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" style="width:130px" data-toggle="dropdown">
-                                [[ getSelectedCategory().name ]]
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" ng-click="selectCategory(0)">
-                                    <span class="glyphicon glyphicon-ok" ng-if="data.category==0"></span>
-                                    همه‌ی موارد
-                                </a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-submenu" ng-repeat="c in category.getfirstLevelCategories()">
-                                    <a href="#" ng-click="selectCategory(c.id)">
-                                        <span class="glyphicon glyphicon-ok" ng-if="data.category==c.id"></span>
-                                        [[c.name]]
+                        <input type="hidden" name="category" value="[[selected]]">
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" style="width:130px"
+                                data-toggle="dropdown">
+                            [[ getSelectedCategory().name ]]
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" ng-click="selectCategory(0, '  همه‌ی موارد')">
+                                <span class="glyphicon glyphicon-ok" ng-if="selected==0"></span>
+                                همه‌ی موارد
+                            </a></li>
+                            <li class="divider"></li>
+
+                            {% for item in  first_level_category %}
+
+                                <li class="dropdown-submenu">
+                                    <a href="#" ng-click="selectCategory({{ item.id }}, '{{ item.name }}')">
+                                        <span class="glyphicon glyphicon-ok" ng-if="selected=={{ item.id }}"></span>
+                                        {{ item.name }}
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li ng-repeat="child in category.getCategoryChildren(c.id)">
-                                            <a href="#" ng-click="selectCategory(child.id)">
-                                                <span class="glyphicon glyphicon-ok" ng-if="data.category==child.id"></span>
-                                                [[child.name]]
-                                            </a>
-                                        </li>
+                                        {% for child in item.children.all %}
+                                            <li>
+                                                <a href="#" ng-click="selectCategory({{ child.id }}, '{{ child.name }}')">
+                                                    <span class="glyphicon glyphicon-ok" ng-if="selected=={{ child.id }}"></span>
+                                                    {{child.name}}
+                                                </a>
+                                            </li>
+
+                                        {% endfor %}
                                     </ul>
                                 </li>
-                            </ul>
-                        </div>
-                        <input class="pull-left btn btn-primary" type="submit" value="جستجو کن">
+                            {% endfor %}
+                        </ul>
                     </div>
+                    <input class="pull-left btn btn-primary" type="submit" value="جستجو کن">
                 </form>
             </div>
             <div class="panel-footer">

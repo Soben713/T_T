@@ -1,17 +1,21 @@
-T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart', 'category',
-    function ($scope, $http, $location, shoppingCart, category) {
+T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart',
+    function ($scope, $http, $location, shoppingCart) {
 
         var search = searchToObject(window.location.search);
 
         $scope.advancedSearch = false;
 
-        $scope.category = category;
-
+        $scope.to_date="";
+        $scope.from_date="";
+        $scope.seller="";
+        $scope.to_price="";
+        $scope.from_price="";
         $scope.searchQuery = ('search' in search ? search['search'] : "");
         $scope.data = {
             category: ('category' in search ? search['category'] : 0),
             page: 1,
             pageSize: 9
+
         };
 
         /*
@@ -20,10 +24,12 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
          *
          */
 
-        $scope.selectCategory = function(id){
-            $scope.data['category'] = id;
-            $scope.page = 1;
-            $scope.updateProductList();
+        $scope.selected = 0;
+        $scope.name= "همه‌‌ی موارد";
+
+        $scope.selectCategory = function(id, name){
+            $scope.selected = id;
+            $scope.name=name;
         };
 
         $scope.getSelectedCategory = function(){
@@ -32,15 +38,12 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
                 "id" : 0
             };
 
-            if($scope.data['category'] == 0)
-                return ret;
-            else
-                for(var ind=0; ind<category.data.categoryList.length; ind++)
-                    if(category.data.categoryList[ind].id == $scope.data['category'])
-                        ret = category.data.categoryList[ind];
+            if($scope.selected != 0){
+                ret.name=$scope.name;
+                ret.selected=$scope.selected;
+            }
             return ret;
         };
-
 
         /*
          *
@@ -60,6 +63,14 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
             console.log($scope.searchQuery);
             $scope.data['page'] = $scope.page;
             $scope.data['search'] = $scope.searchQuery;
+            $scope.data['to_date']=$scope.to_date;
+//          alert(  Date.jalaliConverter.jalaliToGregorian($scope.to_date));
+//              alert($scope.searchQuery);
+              alert($scope.to_date);
+            $scope.data['from_date']=$scope.from_date;
+            $scope.data['to_price']=$scope.to_price;
+            $scope.data['from_price']=$scope.from_price;
+
             var id = WaitMsg.add("درحال دریافت لیست محصولات");
             $http({
                 method: 'POST',
