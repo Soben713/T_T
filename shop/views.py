@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from news.models import News
-from shop.models import SliderItem, Product
+from shop.models import SliderItem, Product, Category
 
 
 def home(request):
@@ -13,7 +13,8 @@ def home(request):
         'last_products': Product.objects.all().order_by('-creation_time')[:5],
         'pop_products': sorted(Product.objects.all(), key=lambda x: x.rating)[:5],
         'last_news': News.objects.all().latest(field_name='date'),
-    })
+        'first_level_category': Category.objects.filter(parent=None),
+        })
 
 
 def product(request, pk):
