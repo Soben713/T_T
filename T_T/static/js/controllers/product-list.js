@@ -1,11 +1,10 @@
-T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart', 'category',
-    function ($scope, $http, $location, shoppingCart, category) {
+T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart',
+    function ($scope, $http, $location, shoppingCart) {
 
         var search = searchToObject(window.location.search);
 
         $scope.advancedSearch = false;
 
-        $scope.category = category;
 
         $scope.searchQuery = ('search' in search ? search['search'] : "");
         $scope.data = {
@@ -20,10 +19,12 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
          *
          */
 
-        $scope.selectCategory = function(id){
-            $scope.data['category'] = id;
-            $scope.page = 1;
-            $scope.updateProductList();
+        $scope.selected = 0;
+        $scope.name= "همه‌‌ی موارد";
+
+        $scope.selectCategory = function(id, name){
+            $scope.selected = id;
+            $scope.name=name;
         };
 
         $scope.getSelectedCategory = function(){
@@ -32,15 +33,12 @@ T_T.controller('ProductListCtrl', ['$scope', '$http', '$location', 'shoppingCart
                 "id" : 0
             };
 
-            if($scope.data['category'] == 0)
-                return ret;
-            else
-                for(var ind=0; ind<category.data.categoryList.length; ind++)
-                    if(category.data.categoryList[ind].id == $scope.data['category'])
-                        ret = category.data.categoryList[ind];
+            if($scope.selected != 0){
+                ret.name=$scope.name;
+                ret.selected=$scope.selected;
+            }
             return ret;
         };
-
 
         /*
          *

@@ -1,4 +1,5 @@
-T_T.controller('RemoteSearch', ['$scope',
+T_T.controller('RemoteSearch',
+    ['$scope',
     function ($scope) {
 
         $scope.selected = 0;

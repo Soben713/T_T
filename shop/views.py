@@ -24,6 +24,12 @@ def product(request, pk):
     })
 
 
+def product_list_page(request):
+    return render(request, 'list.html', {
+        'first_level_category': Category.objects.filter(parent=None),
+    })
+
+
 @csrf_exempt
 def product_list(request):
     data = request.POST
