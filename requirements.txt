@@ -1,7 +1,9 @@
 Django==1.6
+Pillow==2.2.2
 South==0.8.4
 Werkzeug==0.9.4
 argparse==1.2.1
+django-bootstrap3==2.5.1
 django-extensions==1.2.5
 six==1.4.1
 wsgiref==0.1.2

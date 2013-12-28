@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap3 %}
 {% load staticfiles %}
 
 {% block css %}
@@ -20,15 +21,17 @@
                 <div class="panel-heading">
                     مدیریت
                 </div>
-                <div class="panel-body">
-                    <a class="btn btn-link" href="/moderate/add-product">
+                <div class="panel-body list">
+                    <a href="/moderate/add-product" class="active">
                         افزودن محصول
                     </a>
-                    <a class="btn btn-link">لیست محصولات ارائه شده</a>
-                    <a class="btn btn-link">
+                    <a>
+                        لیست محصولات ارائه شده
+                    </a>
+                    <a>
                         فعالیت‌های من
                     </a>
-                    <a class="btn btn-link">
+                    <a>
                         تعیین سطح موجودی
                     </a>
                 </div>
@@ -41,59 +44,37 @@
                 </div>
                 <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-7">
-                                <form role="form" id="add-product" ng-submit="formSubmitted()">
-                                    <div class="form-group">
-                                        <label for="name">
-                                            نام
-                                        </label>
-                                        <input ng-model="name" type="text" class="form-control" id="name" placeholder="نام محصول شما">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="desc">
-                                            توضیحات محصول شما
-                                        </label>
-                                        <input ng-model="desc" type="text" class="form-control" id="desc" placeholder="توضیحات">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="name">
-                                            قیمت
-                                        </label>
-                                        <input ng-model="price" type="number" class="form-control" id="price" placeholder="قیمت محصول">
-                                    </div>
-                                    <label>
-                                        نوع محصول
-                                    </label>
-                                    <select class="form-control" name="category" ng-model="form_category">
-                                        <option ng-repeat="category in category.data.categoryList" value="[[category.id]]">
-                                            [[category.name]]
-                                        </option>
-                                    </select>
-                                </form>
-                            </div>
-                            <div class="col-md-5">
-                                <form class="form" id="image-form" ng-submit="imageFormSubmitted()" ng-if="picUrl==null">
-                                    <div class="form-group">
-                                        <label>
-                                            نوع محصول
-                                        </label>
-                                        <input type="file" name="image">
-                                    </div>
-                                    <input type="submit" class="btn btn-primary" value="آپلود">
-                                </form>
-                                <div ng-if="picUrl!=null">
-                                    <img ng-src="[[picUrl]]" id="to-be-cropped">
+                            <form action="{% url "add_product" %}" method="post" id="add-product"
+                                  enctype="multipart/form-data">
+                                <div class="col-md-7">
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                        {% if field.name != 'image' %}
+                                            {% bootstrap_field field %}
+                                        {% endif %}
+                                    {% endfor %}
                                 </div>
-                            </div>
+                                <div class="col-md-5">
+                                    {% bootstrap_field form.image %}
+                                    <div>
+                                        <img id="to-be-cropped" src="">
+                                    </div>
+                                    <input type="hidden" name="x1" value="[[image.x1]]">
+                                    <input type="hidden" name="y1" value="[[image.y1]]">
+                                    <input type="hidden" name="width" value="[[image.width]]">
+                                    <input type="hidden" name="height" value="[[image.height]]">
+                                </div>
+                            </form>
                         </div>
                         <hr>
-                        <div class="alert alert-warning" ng-if="picId == null">
+                        <div class="alert alert-warning" ng-if="hasImage == false">
                             برای افزودن محصول ابتدا تصویر محصول را آپلود کنید.
                         </div>
-                        <div class="alert alert-warning" ng-if="picId !== null && image.x1==null">
+                        <div class="alert alert-warning" ng-if="hasImage !== false && image.x1==null">
                             پیش از افزودن تصویر را کراپ کنید
                         </div>
-                        <input type="submit" form="add-product" class="btn btn-primary" value="افزودن" ng-if="picId != null && image.x1!= null">
+                        <input type="submit" form="add-product" class="btn btn-primary" value="افزودن"
+                               ng-if="hasImage !== false && image.x1 != null">
                 </div>
             </div>
         </div>

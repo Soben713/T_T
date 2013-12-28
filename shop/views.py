@@ -1,10 +1,13 @@
 import json
+from PIL import Image
 from django.db.models.query_utils import Q
-from django.http.response import HttpResponse
+from django.forms.models import modelform_factory, ModelForm
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from news.models import News
 from shop.models import SliderItem, Product, Category
+from shop.utils import ProductForm
 
 
 def home(request):
@@ -14,7 +17,7 @@ def home(request):
         'pop_products': sorted(Product.objects.all(), key=lambda x: x.rating)[:5],
         'last_news': News.objects.all().latest(field_name='date'),
         'first_level_category': Category.objects.filter(parent=None),
-        })
+    })
 
 
 def product(request, pk):
@@ -52,3 +55,24 @@ def product_list(request):
     response['productList'] = productList
 
     return HttpResponse(json.dumps(response), mimetype='application/javascript')
+
+
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)  # A form bound to the POST data
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.save()
+            img = Image.open(product.image.path)
+            rect = (int(request.POST['x1']),
+                    int(request.POST['y1']),
+                    int(request.POST['x1']) + int(request.POST['width']),
+                    int(request.POST['y1']) + int(request.POST['height']))
+            img = img.crop(rect)
+            img.save(product.image.path)
+        return HttpResponseRedirect('/')
+    else:
+        form = ProductForm()
+    return render(request, 'add-product.html', {
+        'form': form,
+    })
