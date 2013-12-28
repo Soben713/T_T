@@ -3,13 +3,18 @@ from django.db.models.query_utils import Q
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from shop.models import SliderItem, Product
+from shop.models import SliderItem, Product, Category
+
 
 
 def home(request):
     slider_items = SliderItem.objects.all()
+    first_level_category = Category.objects.filter(parent=None)
+
+
     return render(request, 'home.html', {
         'slider_items': slider_items,
+        'first_level_category': first_level_category,
     })
 
 

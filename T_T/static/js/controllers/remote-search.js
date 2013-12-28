@@ -1,10 +1,13 @@
-T_T.controller('RemoteSearch', ['$scope', 'category',
-    function ($scope, category) {
-        $scope.category = category;
-        $scope.selected = 0;
+T_T.controller('RemoteSearch', ['$scope',
+    function ($scope) {
 
-        $scope.selectCategory = function(id){
+        $scope.selected = 0;
+        $scope.name= "همه‌‌ی موارد";
+
+        $scope.selectCategory = function(id, name){
             $scope.selected = id;
+            $scope.name=name;
+            alert(name);
         };
 
         $scope.getSelectedCategory = function(){
@@ -13,12 +16,11 @@ T_T.controller('RemoteSearch', ['$scope', 'category',
                 "id" : 0
             };
 
-            if($scope.selected == 0)
-                return ret;
-            else
-                for(var ind=0; ind<category.data.categoryList.length; ind++)
-                    if(category.data.categoryList[ind].id == $scope.selected)
-                        ret = category.data.categoryList[ind];
+            if($scope.selected != 0){
+                ret.name=$scope.name;
+                ret.selected=$scope.selected;
+            }
+alert(ret);
             return ret;
         };
     }
