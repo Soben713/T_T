@@ -1,3 +1,4 @@
+import random
 from django.db import models
 import re
 
@@ -34,6 +35,13 @@ class Product(models.Model):
                     ret.append(product)
                     break
         return ret
+
+    @property
+    def rating(self):
+        """
+        Random now, have to be implemented later
+        """
+        return random.random() * 5
 
 
 class SliderItem(models.Model):

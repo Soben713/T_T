@@ -3,13 +3,16 @@ from django.db.models.query_utils import Q
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from news.models import News
 from shop.models import SliderItem, Product
 
 
 def home(request):
-    slider_items = SliderItem.objects.all()
     return render(request, 'home.html', {
-        'slider_items': slider_items,
+        'slider_items': SliderItem.objects.all(),
+        'last_products': Product.objects.all().order_by('-creation_time')[:5],
+        'pop_products': sorted(Product.objects.all(), key=lambda x: x.rating)[:5],
+        'last_news': News.objects.all().latest(field_name='date'),
     })
 
 

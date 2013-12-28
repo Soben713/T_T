@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'news',
     'south',
     'django_extensions',
 )

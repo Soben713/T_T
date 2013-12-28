@@ -62,6 +62,26 @@
                 </div>
             </div>
             <cart></cart>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    آخرین محصولات
+                </div>
+                <div class="panel-body list">
+                    {% for product in last_products %}
+                        <a href="{% url 'product' product.pk %}">{{ product.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    محصولات پر طرفدار
+                </div>
+                <div class="panel-body list">
+                    {% for product in pop_products %}
+                        <a href="{% url 'product' product.pk %}">{{ product.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="panel panel-default slider">
@@ -102,6 +122,16 @@
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                     </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    آخرین اخبار
+                </div>
+                <div class="panel-body" style="text-align: justify">
+                    <strong>{{ last_news.title }}</strong>
+                    <hr>
+                    {{ last_news.description | linebreaks}}
                 </div>
             </div>
         </div>
