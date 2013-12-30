@@ -22,9 +22,13 @@
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">مدیریت <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">فروشنده <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/moderate/add-product">افزودن محصول</a></li>
+                    <li><a href="{% url 'add_product' %}">افزودن محصول</a></li>
+                    <li><a href="{% url 'seller_products' %}">محصولات من</a></li>
+                    <li><a href="{% url 'transactions' %}">
+                        تراکنش‌ها
+                    </a></li>
                 </ul>
             </li>
         </ul>

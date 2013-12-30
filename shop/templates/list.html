@@ -13,21 +13,23 @@
         <div class="row">
             <div class="col-sm-6 col-md-4" ng-repeat="product in productData.productList">
                 <div class="thumbnail">
-                    <div class="img-wrapper">
-                        <img ng-src="[[product.picUrl]]">
-                    </div>
+                    <a href="/product/[[product.id]]">
+                        <div class="img-wrapper">
+                            <img ng-src="[[product.picUrl]]">
+                        </div>
+                    </a>
                     <div class="caption">
-                        <label>[[product.name | limitTo:22 ]]</label>
+                        <label>
+                            <a href="/product/[[product.id]]">
+                            [[product.name | limitTo:22 ]]
+                            </a>
+                        </label>
                         <p>[[product.price]]
                         ریال
                         </p>
-                        <p>
-                            <a href="#" class="btn btn-primary btn-sm" role="button" ng-click="addToCart(product.id)">
-                                افزودن به سبد خرید
-                            </a>
-                            <a href="/product/[[product.id]]" class="btn btn-default btn-sm" role="button"> جزییات </a>
-                            <div class="clearfix"></div>
-                        </p>
+                        <a href="#" class="btn btn-primary btn-sm btn-block" role="button" ng-click="addToCart(product.id)">
+                            افزودن به سبد خرید
+                        </a>
                     </div>
                 </div>
             </div>

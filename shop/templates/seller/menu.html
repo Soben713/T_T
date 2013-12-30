@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        مدیریت
+    </div>
+    <div class="panel-body list">
+        <a href="{% url 'add_product' %}" {% if active == 'add' %} class="active" {% endif %}>
+            افزودن محصول
+        </a>
+        <a href="{% url 'seller_products' %}" {% if active == 'products' %} class="active" {% endif %}>
+محصولات من
+        </a>
+        <a href="{% url 'transactions' %}" {% if active == 'trans' %} class="active" {% endif %}>
+            تراکنش‌ها
+        </a>
+    </div>
+</div>

@@ -49,6 +49,13 @@ class Product(models.Model):
         """
         return random.random() * 5
 
+    @property
+    def sold(self):
+        """
+        Random now, have to be implemented later
+        """
+        return random.randint(0, 100)
+
 
 class SliderItem(models.Model):
     product = models.ForeignKey(Product)

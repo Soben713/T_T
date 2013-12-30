@@ -63,7 +63,7 @@ def product_list(request):
     return HttpResponse(json.dumps(response), mimetype='application/javascript')
 
 
-def add_product(request):
+def seller_add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)  # A form bound to the POST data
         if form.is_valid():
@@ -79,6 +79,18 @@ def add_product(request):
         return HttpResponseRedirect('/')
     else:
         form = ProductForm()
-    return render(request, 'add-product.html', {
+    return render(request, 'seller/add-product.html', {
         'form': form,
+    })
+
+
+def seller_products(request):
+    return render(request, 'seller/products.html', {
+        'products': Product.objects.all(), #TODO: send real data later
+    })
+
+
+def seller_transactions(request):
+    return render(request, 'seller/transactions.html', {
+        'products': Product.objects.all()[:5], #TODO: send real data later
     })
