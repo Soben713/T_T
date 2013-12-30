@@ -76,7 +76,7 @@ div .panel {
     vertical-align: middle;
     width: 220px;
     img {
-      max-height: 176px;
+      max-height: 161px;
       margin: auto;
       max-width: 220px;
     }
@@ -165,4 +165,25 @@ div .panel {
 
 .btn.sm {
   font-size: 15px !important;
+}
+
+.panel.panel-default {
+  .panel-heading {
+    cursor: pointer;
+    &:hover {
+      background-image: linear-gradient(to bottom, lighten(#4198ff, 10%) 0px, #4198ff 100%) !important;
+      color: white;
+    }
+  }
+}
+
+.form-group {
+  &.half-right {
+    width: 48%;
+    float: right;
+  }
+  &.half-left {
+    width: 48%;
+    float: left;
+  }
 }

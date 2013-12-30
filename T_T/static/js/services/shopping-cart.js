@@ -3,44 +3,42 @@ T_T.factory('shoppingCart', function ($rootScope, $http) {
 
     shoppingCart.data = {};
 
-    shoppingCart._updateData = function (url, data, msg) {
-        var msg_id = WaitMsg.add(msg);
-        (function(msg_id){
-            $http({
-                method: 'POST',
-                url: url,
-                data: data
-            }).success(function (data, status, headers, config) {
-                    shoppingCart.fetchData();
-                    WaitMsg.success(msg_id);
-            }).error(function(){
-                    WaitMsg.error(msg_id);
-            });
-        })(msg_id);
+    shoppingCart._storeData = function (){
+        var cart = [];
+        for(var i=0; i<shoppingCart.data.cart.length; i++){
+            var item = $.extend({}, shoppingCart.data.cart[i], true);
+            delete item.$$hashKey;
+            cart.push(item);
+        }
+        localStorage['shoppingCart'] = JSON.stringify(cart);
     };
 
     shoppingCart.addToCart = function (id) {
-        var url = 'http://webproject.roohy.me/ajax/2/90109903/cart/add';
-        this._updateData(url, {
-            'productId': id
-        }, 'در حال افزودن به سبد خرید')
+        $http({
+            method: 'POST',
+            url: '/ajax/product/'+id+'/'
+        }).success(function (data, status, headers, config) {
+            console.log(data);
+            shoppingCart.data['cart'].push(data);
+            shoppingCart._storeData();
+        });
     };
 
-    shoppingCart.removeFromCart = function (id) {
-        var url = 'http://webproject.roohy.me/ajax/2/90109903/cart/remove';
-        this._updateData(url, {
-            'productId': id
-        }, 'در حال حذف از سبد خرید')
+    shoppingCart.removeFromCart = function (index) {
+        shoppingCart.data['cart'].splice(index, 1);
+        shoppingCart._storeData();
     };
 
     shoppingCart.fetchData = function () {
-        var url = 'http://webproject.roohy.me/ajax/2/90109903/cart/list';
-        $http({
-            method: 'POST', url: url
-        }).success(function (data, status, headers, config) {
-                shoppingCart.data = data;
-                shoppingCart.broadcast();
-        });
+        if(typeof(localStorage) != "undefined" && 'shoppingCart' in localStorage && 'shoppingCart')
+            shoppingCart.data = {
+                'result': 1
+            };
+            try{
+                shoppingCart.data['cart'] = JSON.parse(localStorage['shoppingCart']);
+            } catch(e) {
+                shoppingCart.data['cart'] = [];
+            }
     };
 
     shoppingCart.broadcast = function () {

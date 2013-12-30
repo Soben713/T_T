@@ -11,31 +11,6 @@ T_T.controller('AddProduct', ['$scope', 'category', '$http',
             height:null
         };
 
-        $scope.formSubmitted = function(){
-            if($scope.hasImage && $scope.image.x1){
-                console.log($scope.name, $scope.desc);
-                $http({
-                    method: 'POST',
-                    url: 'http://webproject.roohy.me/ajax/2/90109903/product/add',
-                    data: {
-                        "name": $scope.name,
-                        "description": $scope.desc,
-                        "category": $scope.form_category,
-                        "price": $scope.price,
-                        "picId": $scope.picId,
-                        "x": $scope.image.x1,
-                        "y": $scope.image.y1,
-                        "w": $scope.image.width,
-                        "h": $scope.image.height
-                    }
-                }).success(function (data, status, headers, config) {
-                        alert("تبریک می‌گوییم، شما محصول خود را ثبت کردید")
-                    }).error(function(){
-                        alert("There was a problem")
-                    })
-            }
-        };
-
         $("#id_image").change(function(){
             var input = this;
             $scope.hasImage = true;

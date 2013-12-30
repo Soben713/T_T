@@ -1,3 +1,4 @@
+import datetime
 import json
 from PIL import Image
 from django.db.models.query_utils import Q
@@ -34,7 +35,20 @@ def product_list_page(request):
 
 
 @csrf_exempt
-def product_list(request):
+def ajax_get_product(request, pk):
+    p = Product.objects.get(id=pk)
+    response = {
+        'picUrl': p.image.url,
+        'name': p.name,
+        'id': pk,
+        'price': p.price,
+        'category': p.category.id,
+    }
+    return HttpResponse(json.dumps(response), 'application/javascript')
+
+
+@csrf_exempt
+def ajax_product_list(request):
     data = request.POST
     page = int(data['page'])
     page_size = int(data['pageSize'])
@@ -44,9 +58,30 @@ def product_list(request):
         'pageSize': page_size,
     }
 
-    results = Product.objects.filter(Q(name__contains=data['search']) | Q(description__contains=data['search']))
+    query = Q(name__contains=data['search']) | Q(description__contains=data['search']) | \
+            Q(category__name__contains=data['search'])
 
-    response['totalResults'] = results.count()
+    if data.get('from_date', []):
+        date_arr = [int(i) for i in data['from_date'].split('/')]
+        query = query & Q(creation_time__gte=datetime.date(*date_arr))
+
+    if data.get('to_date', []):
+        date_arr = [int(i) for i in data['to_date'].split('/')]
+        query = query & Q(creation_time__lte=datetime.date(*date_arr))
+
+    if data.get('from_price', '') != '':
+        query = query & Q(price__gte=int(data['from_price']))
+
+    if data.get('to_price', '') != '':
+        query = query & Q(price__lte=int(data['to_price']))
+
+    _results = Product.objects.filter(query)
+    results = []
+    for _result in _results:
+        if data.get('category', '0') == '0' or _result.in_category(Category.objects.get(id=data['category'])):
+            results.append(_result)
+
+    response['totalResults'] = len(results)
     results = results[(page - 1) * page_size: page * page_size]
 
     productList = []

@@ -56,6 +56,14 @@ class Product(models.Model):
         """
         return random.randint(0, 100)
 
+    def in_category(self, category: Category):
+        if self.category == category:
+            return True
+        for child_category in category.children.all():
+            if self.in_category(child_category):
+                return True
+        return False
+
 
 class SliderItem(models.Model):
     product = models.ForeignKey(Product)

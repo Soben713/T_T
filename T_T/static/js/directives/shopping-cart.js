@@ -33,7 +33,7 @@ T_T.directive('cart', function () {
 "                        <li class='tag-group-item' ng-repeat='product in data.cart'>"+
 "                        [[product.name | limitTo:25]]"+
 "                            <span class='label label-info'>[[product.price]] ریال</span>"+
-"                            <a class='btn btn-link' ng-click='removeFromCart(product.id)'>"+
+"                            <a class='btn btn-link' ng-click='removeFromCart($index)'>"+
 "                                <span class='glyphicon glyphicon-remove pull-left'></span>"+
 "                            </a>"+
 "                        </li>"+
